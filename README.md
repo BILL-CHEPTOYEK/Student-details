@@ -60,12 +60,12 @@ Node.js
 Express
 
 ## Geriga Sunday Drago {Array of Payment, School fees expect}
--Design the API: Define the endpoint, HTTP method, and data format.
--Set up your development environment.
--Create the API endpoint in your code.
--Implement request handling: Extract and validate payment data from the request.
--Store the validated payment data in a database.
--Send a response to confirm the request was successful.
--Test the API thoroughly using the postman to see if the given functionalities 
+  -Design the API: Define the endpoint, HTTP method, and data format.
+  -Set up your development environment.
+  -Create the API endpoint in your code.
+  -Implement request handling: Extract and validate payment data from the request.
+  -Store the validated payment data in a database.
+  -Send a response to confirm the request was successful.
+  -Test the API thoroughly using the postman to see if the given functionalities 
 
 ## Sample code
