@@ -48,7 +48,7 @@ Retrieves details of a specific student identified by `student_id`.
     "outstanding_balance": 750
   }
 }
-
+```
       
 ## Getting Started
 # Clone this repository.
