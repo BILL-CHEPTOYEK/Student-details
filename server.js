@@ -13,12 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Importing models
 const db = require("./models");
 
-// Synchronize the database
-db.sequelize.sync({ force: false }).then(() => {
-    console.log("DB synchronized");
-}).catch(err => {
-    console.error("Failed to synchronize DB: ", err.message);
-});
+
 
 // API Routes
 app.get("/n", (req, res) => {
@@ -51,7 +46,7 @@ app.post("/data", (req, res) => {
 require("./routes/student.routes")(app);
 
 // Define port for project
-const PORT = 8080;
+const PORT = 7000;
 
 // Monitor when server starts
 app.listen(PORT, () => {
