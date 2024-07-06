@@ -13,7 +13,13 @@ module.exports = app => {
     //http://localhost/8080/api/students/makePayment
     router.post("/makePayment", student_controller.makePayment);
 
-    //Retrieve total payment
+    //Payments recieved
+    //http://localhost/7000/api/students/recievedPayment
+     router.get("/receivedPayment", student_controller.PaymentReceived);
+
+    //Evaluating school fees expected
+    //http://localhost/7000/api/students/getExpectedFees
+    router.get("/getExpectedFees", student_controller.ExpectedSchoolFees);
 
     //retrieve students status
     //http://localhost/8080/api/students
