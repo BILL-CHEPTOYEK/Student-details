@@ -1,0 +1,131 @@
+API Documentation
+Get All Students
+Endpoint: GET /students
+
+Description: This endpoint retrieves all student details, including their bio data, payment information, and financial status. It also provides aggregate data like total outstanding balances, total payments, and total expected fees for all students.
+
+Response Format: JSON
+
+Success Response:
+
+{
+  "status": "Success",
+  "status_code": 1000,
+  "message": "Students successfully retrieved",
+  "number_of_students": 10,
+  "studentsStatus": [
+    {
+      "student_id": 1,
+      "first_name": "John",
+      "gender": "Male",
+      "age": 15,
+      "class": "10th Grade",
+      "physical_address": "123 Main St",
+      "parent_phone_number": "555-1234",
+      "payments": [
+        {
+          "amount": 500,
+          "date": "2024-01-15"
+        },
+        {
+          "amount": 300,
+          "date": "2024-03-15"
+        }
+      ],
+      "status": {
+        "expected_fees": 1200,
+        "paid_amount": 800,
+        "outstanding_balance": 400
+      }
+    },
+    ...
+  ],
+  "totalOutstandingBalances": 4000,
+  "totalPayments": 10000,
+  "totalExpectedFees": 14000
+}
+Error Response:
+
+json
+Copy code
+{
+  "error": "Internal server error"
+}
+Detailed Explanation
+Request
+Method: GET
+URL: /students
+Headers: None required
+Body: None
+Response
+Status: 200 OK on success, 500 Internal Server Error on failure
+Content-Type: application/json
+Fields:
+status: A string indicating the status of the request.
+status_code: A numerical code representing the status of the request.
+message: A string message indicating the result of the request.
+number_of_students: The total number of students retrieved.
+studentsStatus: An array of student objects, each containing:
+student_id: The ID of the student.
+first_name: The first name of the student.
+gender: The gender of the student.
+age: The age of the student.
+class: The class of the student.
+physical_address: The physical address of the student.
+parent_phone_number: The phone number of the student's parent.
+payments: An array of payment objects, each containing:
+amount: The amount of the payment.
+date: The date of the payment.
+status: An object containing:
+expected_fees: The expected fees for the student.
+paid_amount: The total amount paid by the student.
+outstanding_balance: The outstanding balance for the student.
+totalOutstandingBalances: The total outstanding balances of all students.
+totalPayments: The total payments made by all students.
+totalExpectedFees: The total expected fees for all students.
+Example:
+Request:
+
+bash
+Copy code
+curl -X GET http://example.com/students
+Response:
+
+json
+Copy code
+{
+  "status": "Success",
+  "status_code": 1000,
+  "message": "Students successfully retrieved",
+  "number_of_students": 10,
+  "studentsStatus": [
+    {
+      "student_id": 1,
+      "first_name": "John",
+      "gender": "Male",
+      "age": 15,
+      "class": "10th Grade",
+      "physical_address": "123 Main St",
+      "parent_phone_number": "555-1234",
+      "payments": [
+        {
+          "amount": 500,
+          "date": "2024-01-15"
+        },
+        {
+          "amount": 300,
+          "date": "2024-03-15"
+        }
+      ],
+      "status": {
+        "expected_fees": 1200,
+        "paid_amount": 800,
+        "outstanding_balance": 400
+      }
+    },
+    ...
+  ],
+  "totalOutstandingBalances": 4000,
+  "totalPayments": 10000,
+  "totalExpectedFees": 14000
+}

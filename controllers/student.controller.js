@@ -12,10 +12,12 @@ exports.getAllStudents = async (req, res) => {
         { model: Finance, as: 'Finance' }
       ]
     });
-
+      
+    //status for each student
     const studentsStatus = students.map(student => {
       const paidAmount = student.Payments.reduce((sum, payment) => sum + payment.amount, 0);
       const outstandingBalance = student.Finance.expected_fees - paidAmount;
+      
 
       return {
         student_id: student.id,
@@ -36,12 +38,15 @@ exports.getAllStudents = async (req, res) => {
         }
       };
     });
-
+       //total outstanding balance 
     const totalOutstandingBalances = studentsStatus.reduce((total, student) => total + student.status.outstanding_balance, 0);
+    //total payment for all students
     const totalPayments = students.reduce((total, student) => 
       total + student.Payments.reduce((sum, payment) => sum + payment.amount, 0), 0
     );
 
+    //total expected_fees 
+    const totalExpectedFees = students.reduce((total, student) => total + student.Finance.expected_fees, 0);
     res.json({
       status: "Success",
       status_code: 1000,
@@ -49,7 +54,8 @@ exports.getAllStudents = async (req, res) => {
       number_of_students: students.length,
       studentsStatus: studentsStatus,
       totalOutstandingBalances: totalOutstandingBalances,
-      totalPayments: totalPayments
+      totalPayments: totalPayments,
+      totalExpectedFees: totalExpectedFees
     });
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
