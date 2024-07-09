@@ -1,3 +1,5 @@
+// server.js
+
 // Import modules
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -12,8 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Importing models
 const db = require("./models");
-
-
 
 // API Routes
 app.get("/n", (req, res) => {
@@ -46,7 +46,7 @@ app.post("/data", (req, res) => {
 require("./routes/student.routes")(app);
 
 // Define port for project
-const PORT = 7000;
+const PORT = 7001;
 
 // Monitor when server starts
 app.listen(PORT, () => {
